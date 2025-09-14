@@ -26,7 +26,7 @@
 - **Core patterns:** Opposite direction, same direction, sliding window, fast/slow
 - **Clean Java templates** I can memorize and modify
 - **Real interview problems** from easy to hard
-- **Timeline:** 3-4 days, 20 minutes daily practice
+- **Timeline:** 3-4 days, 20 minutes daily graphs.practice
 
 ### **LEARNING FLOW:**
 1. **Day 1:** Foundation patterns + templates
