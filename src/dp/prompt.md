@@ -57,17 +57,17 @@ NOT DP if:
 #### **Pattern 1: 1D Linear DP**
 - **Concept:** Single array, each state depends on previous states
 - **Problems:** Climbing Stairs, House Robber, Min Cost Climbing Stairs
-- **Template:** `graphs.dp[i] = optimal choice from graphs.dp[i-1], graphs.dp[i-2], etc.`
+- **Template:** `dp[i] = optimal choice from dp[i-1], dp[i-2], etc.`
 
 #### **Pattern 2: 2D Grid DP**
 - **Concept:** 2D array, move from top-left to bottom-right
 - **Problems:** Unique Paths, Min Path Sum, Triangle
-- **Template:** `graphs.dp[i][j] = optimal choice from graphs.dp[i-1][j], graphs.dp[i][j-1]`
+- **Template:** `dp[i][j] = optimal choice from dp[i-1][j], dp[i][j-1]`
 
 #### **Pattern 3: Decision DP**
 - **Concept:** At each step, make a choice (take/don't take)
 - **Problems:** 0/1 Knapsack, Subset Sum, Partition Equal Subset Sum
-- **Template:** `graphs.dp[i][w] = max(take, don't_take)`
+- **Template:** `dp[i][w] = max(take, don't_take)`
 
 ---
 
@@ -79,22 +79,22 @@ NOT DP if:
 #### **Pattern 4: Longest Common Subsequence (LCS)**
 - **Concept:** Compare two sequences, find optimal alignment
 - **Problems:** LCS, Edit Distance, Distinct Subsequences
-- **Template:** `graphs.dp[i][j] = based on s1[i] == s2[j]`
+- **Template:** `dp[i][j] = based on s1[i] == s2[j]`
 
 #### **Pattern 5: Longest Increasing Subsequence (LIS)**
 - **Concept:** Find optimal increasing subsequence
 - **Problems:** LIS, Russian Doll Envelopes, Largest Divisible Subset
-- **Template:** `graphs.dp[i] = max length ending at index i`
+- **Template:** `dp[i] = max length ending at index i`
 
 #### **Pattern 6: Palindrome DP**
 - **Concept:** Substring/subsequence palindrome problems
 - **Problems:** Longest Palindromic Subsequence, Min Insertions, Palindrome Partitioning
-- **Template:** `graphs.dp[i][j] = palindrome property for substring i to j`
+- **Template:** `dp[i][j] = palindrome property for substring i to j`
 
 #### **Pattern 7: String Matching DP**
 - **Concept:** Pattern matching with wildcard/regex
 - **Problems:** Wildcard Matching, Regular Expression Matching
-- **Template:** `graphs.dp[i][j] = match pattern[i] with string[j]`
+- **Template:** `dp[i][j] = match pattern[i] with string[j]`
 
 ---
 
@@ -106,12 +106,12 @@ NOT DP if:
 #### **Pattern 8: State Machine DP**
 - **Concept:** Multiple states at each position (buy/sell/hold)
 - **Problems:** Stock Buy/Sell series, State machine problems
-- **Template:** `graphs.dp[i][state] = best profit at day i in given state`
+- **Template:** `dp[i][state] = best profit at day i in given state`
 
 #### **Pattern 9: Interval DP**
 - **Concept:** Optimal way to process intervals/ranges
 - **Problems:** Matrix Chain Multiplication, Burst Balloons, Stone Game
-- **Template:** `graphs.dp[i][j] = optimal solution for range [i,j]`
+- **Template:** `dp[i][j] = optimal solution for range [i,j]`
 
 #### **Pattern 10: Tree DP**
 - **Concept:** DP on tree structures (bottom-up)
@@ -121,12 +121,12 @@ NOT DP if:
 #### **Pattern 11: Digit DP**
 - **Concept:** Count numbers with certain properties
 - **Problems:** Count numbers with unique digits, Numbers at most N
-- **Template:** `graphs.dp[pos][tight][state] = count of valid numbers`
+- **Template:** `dp[pos][tight][state] = count of valid numbers`
 
 #### **Pattern 12: Probability DP**
 - **Concept:** Calculate probabilities using DP
 - **Problems:** Knight Probability, Soup Servings
-- **Template:** `graphs.dp[i][j] = probability of reaching state (i,j)`
+- **Template:** `dp[i][j] = probability of reaching state (i,j)`
 
 ---
 
@@ -138,22 +138,22 @@ NOT DP if:
 #### **Pattern 13: Bitmask DP**
 - **Concept:** Use bit manipulation to track states
 - **Problems:** Traveling Salesman, Assignment Problem, Hamiltonian Path
-- **Template:** `graphs.dp[mask] = optimal solution with mask representing used items`
+- **Template:** `dp[mask] = optimal solution with mask representing used items`
 
 #### **Pattern 14: Range DP**
 - **Concept:** Optimize operations on array ranges
 - **Problems:** Minimum Score Triangulation, Remove Boxes
-- **Template:** `graphs.dp[l][r] = optimal solution for range [l,r]`
+- **Template:** `dp[l][r] = optimal solution for range [l,r]`
 
 #### **Pattern 15: Multi-dimensional DP**
 - **Concept:** 3D+ DP for complex state tracking
 - **Problems:** Cherry Pickup, Dungeon Game variations
-- **Template:** `graphs.dp[i][j][k] = multiple parameter optimization`
+- **Template:** `dp[i][j][k] = multiple parameter optimization`
 
 #### **Pattern 16: Game Theory DP**
 - **Concept:** Optimal strategy in two-player games
 - **Problems:** Stone Game series, Nim Game variations
-- **Template:** `graphs.dp[i] = can current player win from state i`
+- **Template:** `dp[i] = can current player win from state i`
 
 ---
 
@@ -266,15 +266,15 @@ int solve(int[] arr, int index, HashMap<String, Integer> memo) {
 // Tabulation (Bottom-up)
 int solveTabulation(int[] arr) {
     int n = arr.length;
-    int[] graphs.dp = new int[n + 2]; // Extra space to avoid bounds checking
+    int[] dp = new int[n + 2]; // Extra space to avoid bounds checking
     
     for (int i = n - 1; i >= 0; i--) {
-        int take = arr[i] + graphs.dp[i + 2];
-        int skip = graphs.dp[i + 1];
-        graphs.dp[i] = Math.max(take, skip);
+        int take = arr[i] + dp[i + 2];
+        int skip = dp[i + 1];
+        dp[i] = Math.max(take, skip);
     }
     
-    return graphs.dp[0];
+    return dp[0];
 }
 ```
 
