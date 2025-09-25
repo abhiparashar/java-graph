@@ -2,10 +2,11 @@ package graphs.unionFind.prac;
 
 public class ConnectedComponents {
     static int[]parent;
+    static int components;
     public static int countComponents(int nodes, int[][]connections){
-        int count = 0;
         //Step-1 : Initialization
         parent = new int[nodes];
+        components = nodes;
         for (int i = 0; i < nodes; i++) {
             parent[i] = i;
         }
@@ -15,13 +16,7 @@ public class ConnectedComponents {
             union(parent, conn[0],conn[1]);
         }
 
-        //Step-3 : count
-        for (int i = 0; i < nodes; i++) {
-            if(parent[i]==i){
-                count++;
-            }
-        }
-        return count;
+        return components;
     }
 
     private static void union(int[]parent,int x, int y){
@@ -29,6 +24,7 @@ public class ConnectedComponents {
        int group2 = find(parent, y);
        if(group1 != group2){
            parent[group1] = group2;
+           components--;
        }
     }
 
